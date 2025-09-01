@@ -28,10 +28,10 @@ The application includes two dashboard components showcasing different implement
 - **Usage**: 
 ```html
 <procedural-dashboard 
-  dashboardId="1" 
-  withTitle="true" 
-  withDownloads="false" 
-  drills="true">
+  [dashboardId]="1" 
+  [withTitle]="true" 
+  [withDownloads]="false" 
+  [drills]="true">
 </procedural-dashboard>
 ```
 
@@ -41,10 +41,10 @@ The application includes two dashboard components showcasing different implement
 - **Usage**:
 ```html
 <declarative-dashboard 
-  dashboardId="2" 
-  withTitle="false" 
-  withDownloads="true" 
-  drills="false">
+  [dashboardId]="2" 
+  [withTitle]="false" 
+  [withDownloads]="true" 
+  [drills]="false">
 </declarative-dashboard>
 ```
 
