@@ -22,10 +22,10 @@ import { Component, OnInit, ElementRef, Renderer2, Input } from '@angular/core';
   `]
 })
 export class ProceduralDashboardComponent implements OnInit {
-  @Input() dashboardId: string = '1';
-  @Input() withTitle: string = 'true';
-  @Input() withDownloads: string = 'false';
-  @Input() drills: string = 'true';
+  @Input() dashboardId: number = 1;
+  @Input() withTitle: boolean = true;
+  @Input() withDownloads: boolean = false;
+  @Input() drills: boolean = true;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
@@ -37,10 +37,10 @@ export class ProceduralDashboardComponent implements OnInit {
     const container = this.elementRef.nativeElement.querySelector('#metabase-container');
     if (container) {
       const dashboard = this.renderer.createElement('metabase-dashboard');
-      this.renderer.setAttribute(dashboard, 'dashboard-id', this.dashboardId);
-      this.renderer.setAttribute(dashboard, 'with-title', this.withTitle);
-      this.renderer.setAttribute(dashboard, 'with-downloads', this.withDownloads);
-      this.renderer.setAttribute(dashboard, 'drills', this.drills);
+      this.renderer.setAttribute(dashboard, 'dashboard-id', String(this.dashboardId));
+      this.renderer.setAttribute(dashboard, 'with-title', String(this.withTitle));
+      this.renderer.setAttribute(dashboard, 'with-downloads', String(this.withDownloads));
+      this.renderer.setAttribute(dashboard, 'drills', String(this.drills));
       this.renderer.appendChild(container, dashboard);
     }
   }

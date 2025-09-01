@@ -29,8 +29,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DeclarativeDashboardComponent {
-  @Input() dashboardId: string = '1';
-  @Input() withTitle: string = 'true';
-  @Input() withDownloads: string = 'false';
-  @Input() drills: string = 'true';
+  @Input() dashboardId: number = 1;
+  @Input() withTitle: boolean = true;
+  @Input() withDownloads: boolean = false;
+  @Input() drills: boolean = true;
 }
