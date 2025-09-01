@@ -1,59 +1,67 @@
-# EmbeddingJS
+# Metabase Angular Embedded JS Sample
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+This project demonstrates how to embed Metabase dashboards in an Angular application using two different approaches.
 
-## Development server
+## Configuration
 
-To start a local development server, run:
+Configure your Metabase instance in `src/index.html`:
+
+```javascript
+defineMetabaseConfig({
+  "useExistingUserSession": true,
+  "instanceUrl": "http://localhost:3000",  // Your Metabase URL
+  "theme": {
+    "colors": {
+      "brand": "red",  // Customize theme colors
+    },
+  },
+});
+```
+
+## Components
+
+The application includes two dashboard components showcasing different implementation approaches:
+
+### 1. ProceduralDashboardComponent
+- **Location**: `src/app/procedural-dashboard.component.ts`
+- **Approach**: Uses `Renderer2.createElement()` and `setAttribute()` to create dashboard elements programmatically
+- **Usage**: 
+```html
+<procedural-dashboard 
+  dashboardId="1" 
+  withTitle="true" 
+  withDownloads="false" 
+  drills="true">
+</procedural-dashboard>
+```
+
+### 2. DeclarativeDashboardComponent
+- **Location**: `src/app/declarative-dashboard.component.ts`
+- **Approach**: Uses Angular template binding with `[attr.]` syntax
+- **Usage**:
+```html
+<declarative-dashboard 
+  dashboardId="2" 
+  withTitle="false" 
+  withDownloads="true" 
+  drills="false">
+</declarative-dashboard>
+```
+
+## Development
+
+Start the development server:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+Navigate to `http://localhost:4200/` to see both dashboard components in action.
 
 ## Building
 
-To build the project run:
+Build the project:
 
 ```bash
 ng build
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
